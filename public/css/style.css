@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Shadows+Into+Light&display=swap');
+
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+.img {
+    height: 300px;
+}
+.img1 {
+    height: 600px;
+}
+.logo {
+    font-family: "Poppins", sans-serif;
+}
+
+.s_logo {
+    font-family: "Shadows Into Light", cursive;
+}
