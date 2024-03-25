@@ -7,7 +7,7 @@
     <h1>{{ $q }}</h1>    
 </div>
 
-
+cscscs
 
 @endsection
 
