@@ -17,7 +17,7 @@
 
   <nav class=" navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="/"><i class="bi bi-person-vcard-fill me-2"></i>Friendship</a>
+            <a class="navbar-brand" href="{{ route('/') }}"><i class="bi bi-person-vcard-fill me-2"></i>Friendship</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -26,10 +26,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('/') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="posts">Blog</a>
+                        <a class="nav-link" href="{{ route('posts') }}">Blog</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -51,7 +51,7 @@
                 </ul>
       
                 <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Login</button>
-                <form class="d-flex" action="search" method="GET">
+                <form class="d-flex" action="{{route('search')}}" method="GET">
                     <input class="form-control me-2" type="search" name="q"  placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success " type="">Search</button>
               
@@ -107,7 +107,7 @@
 {{-- --------------------------footer------------------------------- --}}
     <div class="fixed-bottom bg-dark">
         <footer class="text-center text-light">
-            <h6>D.Vortelinas <i class="bi bi-c-circle"></i>Copyright 2024</h6>
+            <h6>D.Vortelinas <i class="bi bi-c-circle"></i>Copyright {{Date('Y')}}</h6>
         </footer>
     </div>
 {{-- ------------------------end--footer------------------------------- --}}

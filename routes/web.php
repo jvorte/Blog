@@ -15,7 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/posts',[PostsController::class,'second']);
-Route::get('/',[PostsController::class,'front']);
-Route::any('/input_form',[PostsController::class,'form']);
-Route::get('/search',[PostsController::class,'search']);
+Route::get('/posts',[PostsController::class,'index'])->name('posts');
+
+Route::get('/',[PostsController::class,'front'])->name('/');
+
+Route::any('/input_form',[PostsController::class,'form'])->name('input_form');
+
+Route::get('/search',[PostsController::class,'search'])->name('search');
+
+Route::get('/view_post/{post}',[PostsController::class,'post'])->name('view_post');
+
+Route::any('/delete_post/{post}',[PostsController::class,'delete_post'])->name('delete_post');
+
+Route::any('/edit_post/{post}',[PostsController::class,'edit_post'])->name('edit_post');
