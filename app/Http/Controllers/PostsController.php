@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
-use Illuminate\View\View;
-use Illuminate\Support\Facades\DB;
+use Auth;
 
 class PostsController extends Controller
 {
@@ -13,7 +12,7 @@ class PostsController extends Controller
 // -----------home page posts-----------------------------------------
     public function index(){
         $posts = POST::all(); 
-        return view('posts', ['posts' => $posts]);
+        return view('all_posts', ['posts' => $posts]);
     } 
 
     // --------end---home page posts---------------------------------
@@ -29,7 +28,8 @@ class PostsController extends Controller
        public function form(Request $request){
        if ($request->method() == 'POST') {
         $post = new POST();
-        $post->id = $request->get('id');
+        $post->id = $request->get('id');+
+        $post->user_id = Auth::user()->id;
         $post->user = $request->get('user');
         $post->email = $request->get('email');
         $post->title = $request->get('title');
@@ -46,7 +46,7 @@ class PostsController extends Controller
 // -------------end-----new posts---------------------------------
 // -------------edit---------------------------------
 public function edit_post(Post $post, Request $request){
-   
+    if (Auth::user()->id != $post->user_id) return redirect('posts');   
     if ($request->method() == 'POST') {
         $post->title = $request->get('title');
         $post->post = $request->get('post');
@@ -61,10 +61,18 @@ public function edit_post(Post $post, Request $request){
    
 // ------------end--edit------------------------------------------
 
+
 // ------------------post--------------------------------------
 public function post(Post $post){
 
     return view('view_post', ['post' => $post]);
+}
+
+// -------------end---post---------------------------------
+// ------------------post--------------------------------------
+public function posts(Post $post){
+
+    return view('view_post', ['posts' => $post]);
 }
 
 // -------------end---post---------------------------------
@@ -88,6 +96,8 @@ public function post(Post $post){
 
 // ------------------edit--------------------------------------
 public function delete_post(Post $post){
+    if (Auth::user()->id != $post->user_id) return redirect('posts');
+       
      $post->delete();
     return redirect('posts');
 }

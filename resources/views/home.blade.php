@@ -16,10 +16,16 @@
       </div>
 
     </div>
+    <div class="row">
+    <div class="col mt-5 mt-sm-0 ">
+      <h1>The Last Posts</h1>        
+    </div>
+    </div>
 
 <div class="row">
     <div class="col mt-5 mt-sm-0 ">
-          <h1>The Last Posts</h1>
+        
+          
 {{-- ----------------card--------------------------- --}}
       @foreach ($posts as $post)
 
